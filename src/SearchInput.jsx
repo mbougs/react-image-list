@@ -1,12 +1,17 @@
 import { useState } from "react";
 
-const SearchInput = () => {
+const SearchInput = ({ onSearchSubmit }) => {
     const [entry, setEntry] = useState('');
-    
+
+    function onFormSubmit (e) {
+        e.preventDefault();
+        onSearchSubmit(entry);
+        
+    }
     return ( 
         <>
         <div className="ui segment">
-            <form className="ui form">
+            <form className="ui form" onSubmit={onFormSubmit}>
                 <div className="field">
                     <div className="ui massive icon input">
                         <input 
